@@ -6,11 +6,13 @@ import { db } from "@/lib/firebase";
 import { Recipe } from "@/types/recipe";
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
 
 export default function RecipeDetailPage() {
     const { id } = useParams(); // Recupera l'ID dall'URL
     const [recipe, setRecipe] = useState<Recipe | null>(null);
     const [loading, setLoading] = useState(true);
+    const { user } = useAuth();
 
     useEffect(() => {
         // Se non c'è ID, non fare nulla (succede durante il primo render a volte)
@@ -58,9 +60,21 @@ export default function RecipeDetailPage() {
 
     return (
         <div className="max-w-4xl mx-auto p-6 md:p-10 bg-white shadow-lg rounded-xl mt-10">
-            <Link href="/" className="text-gray-500 hover:text-orange-600 mb-6 inline-block">
-                &larr; Torna alle ricette
-            </Link>
+            <div className="flex justify-between items-center mb-6">
+                <Link href="/" className="text-gray-500 hover:text-orange-600 mb-6 inline-block">
+                    &larr; Torna alle ricette
+                </Link>
+
+                {/* Bottone Modifica (Solo Autore) */}
+                {user && user.uid === recipe.userId && (
+                    <Link
+                        href={`/dashboard/edit/${recipe.id}`}
+                        className="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition font-medium flex items-center gap-2"
+                    >
+                        ✏️ Modifica
+                    </Link>
+                )}
+            </div>
 
             {/* Header */}
             <div className="mb-8 border-b pb-6">
