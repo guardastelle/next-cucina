@@ -7,46 +7,58 @@ interface RecipeCardProps {
 
 export default function RecipeCard({ recipe }: RecipeCardProps) {
     return (
-        <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+        <Link
+            href={`/ricette/${recipe.id}`}
+            className="block group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
+        >
             {/* Immagine */}
-            <div className="h-48 bg-orange-100 relative">
+            <div className="h-64 bg-gray-100 relative overflow-hidden">
                 {recipe.imageUrl ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
                         src={recipe.imageUrl}
                         alt={recipe.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                 ) : (
-                    <div className="w-full h-full flex items-center justify-center text-orange-400">
-                        <span className="text-4xl">🥘</span>
+                    <div className="w-full h-full flex items-center justify-center text-gray-300">
+                        <span className="text-5xl">🥘</span>
                     </div>
                 )}
+
+                {/* Floating Rating Badge (Mock) */}
+                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-lg flex items-center gap-1 shadow-sm text-xs font-bold text-gray-800">
+                    <span className="text-yellow-500">★</span> 4.9
+                </div>
+
+                {/* Floating Like Button */}
+                <div className="absolute top-4 right-4 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-sm text-red-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                    ❤
+                </div>
             </div>
 
-            <div className="p-4">
-                <h3 className="text-xl font-bold mb-2 text-gray-800">{recipe.title}</h3>
-                <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+            <div className="p-5">
+                <div className="flex justify-between items-start mb-2">
+                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-green-700 transition leading-tight">
+                        {recipe.title}
+                    </h3>
+                </div>
+
+                <p className="text-gray-500 text-sm mb-4 line-clamp-2 h-10">
                     {recipe.description}
                 </p>
 
-                <div className="flex justify-between items-center text-sm text-gray-500 mb-4">
-                    <span>🕒 {recipe.time} min</span>
-                    <span className={`px-2 py-1 rounded-full text-xs font-semibold
-            ${recipe.difficulty === 'facile' ? 'bg-green-100 text-green-800' :
-                            recipe.difficulty === 'media' ? 'bg-yellow-100 text-yellow-800' :
-                                'bg-red-100 text-red-800'}`}>
-                        {recipe.difficulty}
-                    </span>
+                <div className="flex items-center gap-4 text-sm text-gray-600">
+                    <div className="flex items-center gap-1">
+                        <span>⏰</span>
+                        <span className="font-medium">{recipe.time} min</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                        <span>📊</span>
+                        <span className="capitalize font-medium">{recipe.difficulty}</span>
+                    </div>
                 </div>
-
-                <Link
-                    href={`/ricette/${recipe.id}`}
-                    className="block w-full text-center bg-orange-50 text-orange-600 font-medium py-2 rounded hover:bg-orange-100 transition"
-                >
-                    Leggi Ricetta
-                </Link>
             </div>
-        </div>
+        </Link>
     );
 }

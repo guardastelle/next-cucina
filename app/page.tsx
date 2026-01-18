@@ -48,11 +48,13 @@ export default function Home() {
   }
 
   return (
-    <main className="max-w-6xl mx-auto p-6">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-orange-600 mb-4">NextCucina 🍝</h1>
-        <p className="text-xl text-gray-600">
-          Scopri e condividi le migliori ricette della community.
+    <main className="max-w-7xl mx-auto p-6 md:p-12">
+      <div className="text-center mb-16 space-y-4">
+        <h1 className="text-5xl font-bold text-gray-900 tracking-tight">
+          Next<span className="text-green-600">Cucina</span> 🍃
+        </h1>
+        <p className="text-xl text-gray-500 max-w-2xl mx-auto font-light">
+          Scopri ricette sane e deliziose, condivise dalla nostra community di appassionati.
         </p>
       </div>
 

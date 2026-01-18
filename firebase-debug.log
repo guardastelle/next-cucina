@@ -1,0 +1,9 @@
+[debug] [2026-01-12T20:32:29.784Z] ----------------------------------------------------------------------
+[debug] [2026-01-12T20:32:29.788Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\giuse\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js login
+[debug] [2026-01-12T20:32:29.788Z] CLI Version:   15.2.1
+[debug] [2026-01-12T20:32:29.788Z] Platform:      win32
+[debug] [2026-01-12T20:32:29.788Z] Node Version:  v24.4.1
+[debug] [2026-01-12T20:32:29.789Z] Time:          Mon Jan 12 2026 21:32:29 GMT+0100 (Ora standard dell’Europa centrale)
+[debug] [2026-01-12T20:32:29.789Z] ----------------------------------------------------------------------
+[debug] 
+[info] Already logged in as giuseppepelle@gmail.com

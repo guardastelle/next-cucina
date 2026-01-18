@@ -1,5 +1,28 @@
 @import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@theme {
+    --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+
+    --color-green-50: #F3F7F2;
+    --color-green-100: #E8F0E5;
+    --color-green-200: #D1E0CC;
+    --color-green-300: #B8D0B0;
+    --color-green-400: #9EBFA0;
+    --color-green-500: #4F9D69;
+    --color-green-600: #3E8555;
+    --color-green-700: #2F6A42;
+    --color-green-800: #1A4D2E;
+    --color-green-900: #0F331C;
+
+    --color-orange-500: #FF8C42;
+
+    --radius-xl: 1rem;
+    --radius-2xl: 1.5rem;
+    --radius-3xl: 2rem;
+}
+
+@layer base {
+    body {
+        @apply bg-green-50 text-gray-800;
+    }
+}
